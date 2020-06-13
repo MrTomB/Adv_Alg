@@ -1,0 +1,159 @@
+
+CS109 ASG1 Built in C++ Functions
+///////////////////////////////////
+cat pathname . . .
+The contents of each file is copied to stdout. An error is reported if no
+files are specified, a file does not exist, or is a directory.
+
+(void fn_cat) -> (state.cat) -> (void inode_state::cat) -> (inode_ptr inode_state::resolve_pathname)
+
+cat function (C++ Built-in Function list)
+
+- .find_last_of
+- returns: The position of the last character that matches.
+			If no matches are found, the function returns string::npos.
+- .substr
+- 	string substr (size_t pos = 0, size_t len = npos) const;
+	Generate substring
+	Returns a newly constructed string object with its value initialized to a copy of a substring of this object.
+	The substring is the portion of the object that starts at character position pos and spans len characters (or until the end of the string, whichever comes first).
+- return: A string object with a substring of this object.
+
+///////////////////////////////////
+cd [pathname]
+The current directory is set the the pathname given. If no pathname is
+specified, the root directory (/) is used. It is an error if the pathname
+does not exist or is a plain file, or if more than one operand is given.
+
+(void fn_cd) -> (void inode_state::cd) -> (inode_ptr inode_state::resolve_pathname)
+
+cd function (C++ Built-in Function list)
+
+- directory_ptr_of
+
+////////////////////////////////////
+echo [words . . .]
+The string, which may be empty, is echoed to stdout on a line by itself
+
+
+////////////////////////////////////
+void fn_exit
+
+exit [status]
+Exit the program with the given status. If the status is missing, exit
+with status 0. If a non-numeric argument is given, exit with status 127.
+
+Calls the current terminate handler.
+
+By default, the terminate handler calls abort. But this behavior can be redefined by calling set_terminate.
+This function is automatically called when no catch handler can be found for a thrown exception, or for some other exceptional circumstance that makes impossible to continue the exception handling process.
+This function is provided so that the terminate handler can be explicitly called by a program that needs to abnormally terminate, and works even if set_terminate has not been used to set a custom terminate handler (calling abort in this case).
+
+catch (...)
+- If an ellipsis (...) is used as the parameter of catch, that handler will catch any exception no matter what the type of the exception thrown. This can be used as a default handler that catches all exceptions not caught by other handlers:
+
+/////////////////////////////////////
+
+- void fn_ls
+ls [pathname . . .]
+A description of the files or directories are printed to stdout. It is an
+error if any of the file or directory does not exist. If no pathname is speci-
+fied, the current working directory is used. If a pathname specified is a
+directory, then the contents of the directory are listed. A directory listed
+within a directory is shown by a terminating slash. Elements of a directory
+are listed lexicographically.
+For each file listed, output consists of the inode number, then the size,
+then the filename. Output is lined up into columns and each column is
+separated from the next by two spaces. The numeric fields are exactly 6
+characters wide and the units position in a column must be aligned.
+
+- /*undefined*/ setw (int n);
+Set field width
+Sets the field width to be used on output operations.
+
+Behaves as if member width were called with n as argument on the stream on which it is inserted/extracted as a manipulator (it can be inserted/extracted on input streams or output streams).
+
+This manipulator is declared in header <iomanip>.
+
+
+/////////////////////////////////////
+
+- lsr [pathname . . .]
+As for ls, but a recursive depth-first preorder traversal is done for subdirectories.
+
+/////////////////////////////////////
+
+- make pathname [words . . .]
+The file specified is created and the rest of the words are put in that file.
+If the file already exists,anew one is not created, but its contents are
+replaced. It is an error to specify a directory. If there are no words, the
+file is empty.
+
+//////////////////////////////////////
+
+-mkdir pathname
+A new directory is created. It is an error if a file or directory of the same
+name already exists, or if the complete pathname to the parent of this
+new directory does not already exist. Two entries are added to the directory,
+namely dot (.) and dotdot (..). Directory entries are always kept in
+sorted lexicographic order.
+
+//////////////////////////////////////
+
+- prompt string
+Set the prompt to the words specified on the command line. Each word is
+separated from the next by one space and the prompt itself is terminated
+by an extra space. The default prompt is a single percent sign and a
+space (% ).
+
+
+//////////////////////////////////////
+
+- pwd
+Prints the current working directory.
+
+- .push_back
+Adds a new element at the end of the vector, after its current last element. The content of val is copied (or moved) to the new element.
+
+This effectively increases the container size by one, which causes an automatic reallocation of the allocated storage space if -and only if- the new vector size surpasses the current vector capacity.
+
+return: 
+
+
+///////////////////////////////////////
+
+- rm pathname
+The specified file or directory is deleted (removed from its parent’s list of
+files and subdirectories). It is an error for the pathname not to exist. If
+the pathname is a directory, it must be empty.
+
+///////////////////////////////////////
+
+- rmr pathname
+A recursive removal is done, using a depth-first postorder traversal.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
